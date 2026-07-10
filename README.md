@@ -11,12 +11,13 @@ Naz & Yakup'un kına ve yemekli eğlence davetiyesi. WhatsApp üzerinden paylaş
 
 ## Özellikler
 
-- Açılış zarf animasyonu
-- Kına ve yemekli eğlence etkinlik kartları
+- Animasyonlu davetiye kartı açılışı
+- Film şeridi fotoğraf galerisi
+- Kına ve yemekli eğlence program kartları
 - Google Maps yönlendirme
 - Geri sayım sayacı
-- Fotoğraf galerisi (slideshow + polaroid)
-- Arka plan müziği (YouTube)
+- Arka plan müziği
+- Hediye / IBAN bölümü
 - Mobil uyumlu tasarım
 - WhatsApp önizleme desteği (Open Graph)
 
@@ -28,25 +29,6 @@ npx serve .
 
 Tarayıcıda `http://localhost:3000` adresini açın.
 
-## Fotoğraf Ekleme
-
-1. Fotoğrafları `photos/` klasörüne koyun
-2. `index.html` içindeki placeholder'ları `<img>` ile değiştirin:
-
-```html
-<div class="polaroid-img">
-  <img src="photos/foto1.jpg" alt="Açıklama" loading="lazy">
-</div>
-```
-
-Slayt için:
-
-```html
-<div class="slide active" data-caption="Birlikte...">
-  <img src="photos/foto1.jpg" alt="Birlikte" loading="lazy">
-</div>
-```
-
 ## Deploy
 
 GitHub'a push edildiğinde Vercel otomatik deploy eder.
@@ -54,6 +36,6 @@ GitHub'a push edildiğinde Vercel otomatik deploy eder.
 ## Link Paylaşımı (WhatsApp)
 
 ```
-Merhaba! 🎉 Naz & Yakup'un davetiyesine buradan ulaşabilirsiniz:
+Merhaba! Naz & Yakup'un davetiyesine buradan ulaşabilirsiniz:
 https://davetiye-xxx.vercel.app
 ```
