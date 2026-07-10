@@ -1,0 +1,8 @@
+# Yedek / gereksiz dosyalar
+Hüseyin Kemancı - AŞK.mp3
+fotograflar/WhatsApp*
+
+# Sistem
+.DS_Store
+Thumbs.db
+desktop.ini

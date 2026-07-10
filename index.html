@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Naz & Yakup — Davetiye</title>
+  <meta name="description" content="Naz & Yakup davetiyesi. 2 Ekim Kına · 3 Ekim Yemekli Eğlence · İzmir">
+  <meta property="og:title" content="Naz & Yakup — Davetiye">
+  <meta property="og:description" content="2 Ekim Kına · 3 Ekim Yemekli Eğlence · İzmir">
+  <meta property="og:image" content="/og-image.svg">
+  <meta name="theme-color" content="#FBF6F0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <div class="intro" id="intro">
+    <div class="intro-inner">
+      <article class="intro-card" id="intro-seal">
+        <div class="intro-card-frame" aria-hidden="true">
+          <span class="intro-corner intro-corner--tl"></span>
+          <span class="intro-corner intro-corner--tr"></span>
+          <span class="intro-corner intro-corner--bl"></span>
+          <span class="intro-corner intro-corner--br"></span>
+        </div>
+
+        <p class="intro-card-label">Davetiye</p>
+        <div class="intro-card-ornament" aria-hidden="true"><span></span></div>
+
+        <div class="intro-card-photo">
+          <img src="photos/bebeklik.jpeg" alt="Naz ve Yakup bebeklik fotoğrafı" width="180" height="240">
+        </div>
+
+        <h1 class="intro-card-names">Naz <span class="intro-amp">&</span> Yakup</h1>
+        <p class="intro-card-sub">Sizi aramızda görmekten mutluluk duyarız</p>
+        <p class="intro-card-date">2 – 3 Ekim 2026 · İzmir</p>
+
+        <div class="intro-wax-seal" aria-hidden="true">
+          <span>N & Y</span>
+        </div>
+
+        <p class="intro-text">Davetiyeyi açmak için dokunun</p>
+      </article>
+    </div>
+  </div>
+
+  <main class="invite" id="invite" aria-hidden="true">
+    <div class="invite-wrap anim" style="--d:0">
+
+      <article class="sheet">
+
+        <!-- Başlık -->
+        <header class="sheet-header">
+          <div class="header-shine" aria-hidden="true"></div>
+          <div class="header-sparkles" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <p class="sheet-tag hdr-anim" style="--hd:0">İzmir · Ekim 2026</p>
+          <h1 class="sheet-names">
+            <span class="name-left">
+              <span class="letter" style="--l:0">N</span><span class="letter" style="--l:1">a</span><span class="letter" style="--l:2">z</span>
+            </span>
+            <span class="name-amp hdr-anim" style="--hd:2">&</span>
+            <span class="name-right">
+              <span class="letter" style="--l:0">Y</span><span class="letter" style="--l:1">a</span><span class="letter" style="--l:2">k</span><span class="letter" style="--l:3">u</span><span class="letter" style="--l:4">p</span>
+            </span>
+          </h1>
+          <div class="header-line hdr-anim" style="--hd:3" aria-hidden="true"></div>
+          <p class="sheet-lead">
+            <span class="lead-word hdr-anim" style="--hd:4">Mutluluğumuzu</span>
+            <span class="lead-word hdr-anim" style="--hd:5">sizinle</span>
+            <span class="lead-word hdr-anim" style="--hd:6">paylaşmak</span>
+            <span class="lead-word hdr-anim" style="--hd:7">istiyoruz</span>
+          </p>
+
+          <div class="filmstrip hdr-anim" style="--hd:8">
+            <div class="filmstrip-viewport">
+              <div class="filmstrip-scroll" id="filmstrip-scroll">
+                <div class="filmstrip-track" id="filmstrip-track">
+                  <div class="film-cell"><img src="fotograflar/foto1.jpeg" alt="Naz ve Yakup" loading="lazy"></div>
+                  <div class="film-cell"><img src="fotograflar/foto2.jpeg" alt="Naz ve Yakup" loading="lazy"></div>
+                  <div class="film-cell"><img src="fotograflar/foto3.jpeg" alt="Naz ve Yakup" loading="lazy"></div>
+                  <div class="film-cell"><img src="fotograflar/foto4.jpeg" alt="Naz ve Yakup" loading="lazy"></div>
+                  <div class="film-cell"><img src="fotograflar/foto5.jpeg" alt="Naz ve Yakup" loading="lazy"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div class="sheet-body">
+
+          <!-- Davet metni -->
+          <section class="block anim" style="--d:1">
+            <h2 class="block-title">Davet</h2>
+            <p class="block-text">
+              Sevgili dostlarımız, hayatımızın en güzel günlerine sizleri de davet ediyoruz.
+              Kına gecemizde coşkumuzu, yemekli eğlencemizde ise birlikte güzel vakit geçirmek
+              için sizi aramızda görmekten büyük mutluluk duyacağız.
+            </p>
+            <p class="block-sign">Sevgiyle, <strong>Naz & Yakup</strong></p>
+          </section>
+
+          <!-- Geri sayım -->
+          <section class="block anim" style="--d:2">
+            <h2 class="block-title">Kına Gecesine Kalan Süre</h2>
+            <div class="countdown">
+              <div class="countdown-item"><b id="cd-days">--</b><span>Gün</span></div>
+              <div class="countdown-item"><b id="cd-hours">--</b><span>Saat</span></div>
+              <div class="countdown-item"><b id="cd-mins">--</b><span>Dakika</span></div>
+              <div class="countdown-item"><b id="cd-secs">--</b><span>Saniye</span></div>
+            </div>
+          </section>
+
+          <!-- Program -->
+          <section class="block anim" style="--d:3">
+            <h2 class="block-title">Program</h2>
+
+            <div class="program-list">
+              <article class="program-item">
+                <div class="program-date">
+                  <span class="program-day">02</span>
+                  <span class="program-month">Ekim</span>
+                </div>
+                <div class="program-info">
+                  <h3>Kına Gecesi</h3>
+                  <p class="program-time">Saat 20:00</p>
+                  <p class="program-venue">Atmosfer Cafe</p>
+                  <p class="program-address">Piri Reis, 324. Sk. No:7A-B, Konak/İzmir</p>
+                  <a class="program-link" href="https://maps.google.com/?q=Atmosfer+Cafe+Piri+Reis+324+Sk+Konak+İzmir" target="_blank" rel="noopener">Haritada Gör</a>
+                </div>
+              </article>
+
+              <div class="program-divider"></div>
+
+              <article class="program-item">
+                <div class="program-date">
+                  <span class="program-day">03</span>
+                  <span class="program-month">Ekim</span>
+                </div>
+                <div class="program-info">
+                  <h3>Yemekli Eğlence</h3>
+                  <p class="program-time">Saat 20:00</p>
+                  <p class="program-venue">İlk Adresim</p>
+                  <p class="program-address">Mithatpaşa Cd. No:480/A, 35280 Konak/İzmir</p>
+                  <a class="program-link" href="https://maps.google.com/?q=İlk+Adresim+Mithatpaşa+Cd+480+Konak+İzmir" target="_blank" rel="noopener">Haritada Gör</a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Hediye / destek -->
+          <section class="block block-gift anim" style="--d:4">
+            <h2 class="block-title">Hediye</h2>
+            <p class="block-text">
+              Mutluluğumuzda yanımızda olmanız bizim için en güzel hediye.
+              Destek olmak isterseniz varsa hediyenizi aşağıdaki hesaba gönderebilirsiniz.
+            </p>
+
+            <div class="gift-card">
+              <p class="gift-card-label">Banka Hesabı</p>
+              <p class="gift-card-name" id="gift-name">Naz & Yakup</p>
+              <p class="gift-card-iban" id="gift-iban">TR00 0000 0000 0000 0000 0000 00</p>
+              <button class="gift-copy-btn" id="gift-copy" type="button">IBAN'ı Kopyala</button>
+            </div>
+          </section>
+
+        </div>
+
+        <footer class="sheet-footer anim" style="--d:5">
+          <p>2 – 3 Ekim 2026 · İzmir</p>
+        </footer>
+
+      </article>
+
+    </div>
+  </main>
+
+  <button class="music-fab" id="music-btn" aria-label="Müziği aç/kapat" hidden>
+    <span class="fab-icon">♪</span>
+  </button>
+
+  <audio id="music-audio" preload="auto" hidden>
+    <source src="audio/ask.mp3" type="audio/mpeg">
+  </audio>
+  <script src="js/main.js"></script>
+</body>
+</html>
