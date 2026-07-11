@@ -34,7 +34,40 @@
 
   <div class="intro" id="intro">
     <div class="intro-inner">
-      <article class="intro-card" id="intro-seal">
+      <div class="intro-ambient" aria-hidden="true">
+        <span class="intro-spark"></span>
+        <span class="intro-spark"></span>
+        <span class="intro-spark"></span>
+        <span class="intro-spark"></span>
+        <span class="intro-spark"></span>
+        <span class="intro-spark"></span>
+        <span class="intro-spark"></span>
+        <span class="intro-spark"></span>
+        <span class="intro-spark"></span>
+        <span class="intro-spark"></span>
+        <span class="intro-spark"></span>
+        <span class="intro-spark"></span>
+      </div>
+
+      <div class="intro-scene">
+        <div class="intro-card-wrap">
+          <div class="intro-lace-frame" aria-hidden="true">
+            <span class="intro-lace intro-lace--tl"></span>
+            <span class="intro-lace intro-lace--tr"></span>
+            <span class="intro-lace intro-lace--bl"></span>
+            <span class="intro-lace intro-lace--br"></span>
+            <span class="intro-lace-edge intro-lace-edge--top"></span>
+            <span class="intro-lace-edge intro-lace-edge--bottom"></span>
+            <span class="intro-lace-edge intro-lace-edge--left"></span>
+            <span class="intro-lace-edge intro-lace-edge--right"></span>
+          </div>
+
+          <div class="intro-rose intro-rose--top" aria-hidden="true"></div>
+          <div class="intro-rose intro-rose--bottom" aria-hidden="true"></div>
+          <div class="intro-rose intro-rose--left" aria-hidden="true"></div>
+          <div class="intro-rose intro-rose--right" aria-hidden="true"></div>
+
+          <article class="intro-card" id="intro-seal">
         <div class="intro-card-frame" aria-hidden="true">
           <span class="intro-corner intro-corner--tl"></span>
           <span class="intro-corner intro-corner--tr"></span>
@@ -50,20 +83,39 @@
         </div>
 
         <h1 class="intro-card-names">Naz <span class="intro-amp">&</span> Yakup</h1>
-        <p class="intro-card-sub">Sizi aramızda görmekten mutluluk duyarız</p>
+        <p class="intro-card-sub" id="intro-guest-text">Sizi aramızda görmekten mutluluk duyarız</p>
         <p class="intro-card-date">2 – 3 Ekim 2026 · İzmir</p>
 
         <div class="intro-wax-seal" aria-hidden="true">
           <span>N & Y</span>
         </div>
+        </article>
+        </div>
 
         <p class="intro-text">Davetiyeyi açmak için dokunun</p>
-      </article>
+      </div>
     </div>
   </div>
 
   <main class="invite" id="invite" aria-hidden="true">
     <div class="invite-wrap anim" style="--d:0">
+
+      <div class="sheet-wrap">
+        <div class="sheet-lace-frame" aria-hidden="true">
+          <span class="sheet-lace sheet-lace--tl"></span>
+          <span class="sheet-lace sheet-lace--tr"></span>
+          <span class="sheet-lace sheet-lace--bl"></span>
+          <span class="sheet-lace sheet-lace--br"></span>
+          <span class="sheet-lace-edge sheet-lace-edge--top"></span>
+          <span class="sheet-lace-edge sheet-lace-edge--bottom"></span>
+          <span class="sheet-lace-edge sheet-lace-edge--left"></span>
+          <span class="sheet-lace-edge sheet-lace-edge--right"></span>
+        </div>
+
+        <div class="sheet-rose sheet-rose--top" aria-hidden="true"></div>
+        <div class="sheet-rose sheet-rose--bottom" aria-hidden="true"></div>
+        <div class="sheet-rose sheet-rose--left" aria-hidden="true"></div>
+        <div class="sheet-rose sheet-rose--right" aria-hidden="true"></div>
 
       <article class="sheet">
 
@@ -111,22 +163,27 @@
           <!-- Davet metni -->
           <section class="block anim" style="--d:1">
             <h2 class="block-title">Davet</h2>
-            <p class="block-text">
+            <p class="block-text" id="invite-text">
               Sevgili dostlarımız, hayatımızın en güzel günlerine sizleri de davet ediyoruz.
-              Kına gecemizde coşkumuzu, yemekli eğlencemizde ise birlikte güzel vakit geçirmek
+              Kına gecemizde coşkumuzu, eğlencemizde ise birlikte güzel vakit geçirmek
               için sizi aramızda görmekten büyük mutluluk duyacağız.
             </p>
             <p class="block-sign">Sevgiyle, <strong>Naz & Yakup</strong></p>
           </section>
 
           <!-- Geri sayım -->
-          <section class="block anim" style="--d:2">
-            <h2 class="block-title">Kına Gecesine Kalan Süre</h2>
-            <div class="countdown">
+          <section class="block block-countdown kina-theme anim" style="--d:2" id="countdown-block">
+            <h2 class="block-title" id="countdown-title">Kına Gecesine Kalan Süre</h2>
+            <div class="countdown" id="countdown-timer">
               <div class="countdown-item"><b id="cd-days">--</b><span>Gün</span></div>
               <div class="countdown-item"><b id="cd-hours">--</b><span>Saat</span></div>
               <div class="countdown-item"><b id="cd-mins">--</b><span>Dakika</span></div>
               <div class="countdown-item"><b id="cd-secs">--</b><span>Saniye</span></div>
+            </div>
+            <div class="countdown-celebrate" id="countdown-celebrate" hidden>
+              <div class="celebrate-icon" aria-hidden="true">✦</div>
+              <p class="celebrate-text">Bugün günümüz!</p>
+              <p class="celebrate-sub">Kına gecesinde görüşmek üzere</p>
             </div>
           </section>
 
@@ -135,7 +192,7 @@
             <h2 class="block-title">Program</h2>
 
             <div class="program-list">
-              <article class="program-item">
+              <article class="program-item program-item--kina">
                 <div class="program-date">
                   <span class="program-day">02</span>
                   <span class="program-month">Ekim</span>
@@ -151,13 +208,13 @@
 
               <div class="program-divider"></div>
 
-              <article class="program-item">
+              <article class="program-item program-item--eglence">
                 <div class="program-date">
                   <span class="program-day">03</span>
                   <span class="program-month">Ekim</span>
                 </div>
                 <div class="program-info">
-                  <h3>Yemekli Eğlence</h3>
+                  <h3>Eğlence</h3>
                   <p class="program-time">Saat 20:00</p>
                   <p class="program-venue">İlk Adresim</p>
                   <p class="program-address">Mithatpaşa Cd. No:480/A, 35280 Konak/İzmir</p>
@@ -190,6 +247,7 @@
         </footer>
 
       </article>
+      </div>
 
     </div>
   </main>

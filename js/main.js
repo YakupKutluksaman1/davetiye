@@ -2,12 +2,26 @@
   'use strict';
 
   var KINA_DATE = new Date('2026-10-02T20:00:00+03:00');
+  var KINA_THEME_DAYS = 7;
   var MUSIC_START = 58;
+  var countdownCelebrated = false;
+  var kinaMode = false;
 
   /* Hediye bilgileri — buradan güncelleyin */
   var GIFT = {
     name: 'Naz & Yakup',
     iban: 'TR00 0000 0000 0000 0000 0000 00'
+  };
+
+  var INVITE_TEXT = {
+    generic:
+      'Sevgili dostlarımız, hayatımızın en güzel günlerine sizleri de davet ediyoruz. ' +
+      'Kına gecemizde coşkumuzu, eğlencemizde ise birlikte güzel vakit geçirmek ' +
+      'için sizi aramızda görmekten büyük mutluluk duyacağız.',
+    personal:
+      'hayatımızın en güzel günlerine sizi de davet ediyoruz. ' +
+      'Kına gecemizde coşkumuzu, eğlencemizde ise birlikte güzel vakit geçirmek ' +
+      'için sizi aramızda görmekten büyük mutluluk duyacağız.'
   };
 
   var intro = document.getElementById('intro');
@@ -31,27 +45,79 @@
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  /* ---- Kişiye özel davet (?ad=Ahmet) ---- */
+  function getGuestName() {
+    var params = new URLSearchParams(window.location.search);
+    var raw = params.get('ad') || params.get('isim') || params.get('name');
+    if (!raw) return '';
+
+    var name = decodeURIComponent(raw.replace(/\+/g, ' ')).trim();
+    name = name.replace(/[<>"'`\\/]/g, '');
+    if (!name || name.length > 48) return '';
+    return name;
+  }
+
+  function initPersonalization() {
+    var guest = getGuestName();
+    if (!guest) return;
+
+    var introText = document.getElementById('intro-guest-text');
+    if (introText) {
+      introText.classList.add('personal');
+      introText.textContent = '';
+      introText.appendChild(document.createTextNode('Sevgili '));
+      var introName = document.createElement('span');
+      introName.className = 'guest-name';
+      introName.textContent = guest;
+      introText.appendChild(introName);
+      introText.appendChild(document.createTextNode(', sizi aramızda görmekten mutluluk duyarız'));
+    }
+
+    var inviteText = document.getElementById('invite-text');
+    if (inviteText) {
+      inviteText.textContent = '';
+      inviteText.appendChild(document.createTextNode('Sevgili '));
+      var inviteName = document.createElement('span');
+      inviteName.className = 'guest-name';
+      inviteName.textContent = guest;
+      inviteText.appendChild(inviteName);
+      inviteText.appendChild(document.createTextNode(', ' + INVITE_TEXT.personal));
+    }
+  }
+
+  initPersonalization();
+
   /* ---- Parçacık sistemi ---- */
   var COLORS = ['#C9A84C', '#c99595', '#722F37', '#E8D5A3', '#8fbc8f', '#d4af37'];
+  var GOLD_COLORS = ['#C9A84C', '#E8D5A3', '#d4af37', '#f0dfa0'];
 
-  function createParticle(x, y, burst) {
-    var types = ['confetti', 'heart', 'leaf'];
-    var type = types[Math.floor(Math.random() * types.length)];
+  function createParticle(x, y, burst, forceGold) {
+    var types = kinaMode
+      ? ['confetti', 'heart', 'leaf', 'gold', 'gold']
+      : ['confetti', 'heart', 'leaf'];
+    var type = forceGold ? 'gold' : types[Math.floor(Math.random() * types.length)];
+    var isGold = type === 'gold';
     return {
       x: x,
       y: y,
       type: type,
-      vx: (Math.random() - 0.5) * (burst ? 14 : 2),
-      vy: burst ? -(Math.random() * 12 + 4) : Math.random() * 1.5 + 0.5,
-      size: Math.random() * 8 + 6,
+      vx: (Math.random() - 0.5) * (burst ? 14 : (isGold ? 1.2 : 2)),
+      vy: burst ? -(Math.random() * 12 + 4) : (isGold ? Math.random() * 0.8 + 0.2 : Math.random() * 1.5 + 0.5),
+      size: isGold ? Math.random() * 2.5 + 1 : Math.random() * 8 + 6,
       rotation: Math.random() * 360,
-      rotSpeed: (Math.random() - 0.5) * 8,
-      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      rotSpeed: (Math.random() - 0.5) * (isGold ? 2 : 8),
+      color: isGold
+        ? GOLD_COLORS[Math.floor(Math.random() * GOLD_COLORS.length)]
+        : COLORS[Math.floor(Math.random() * COLORS.length)],
       opacity: 1,
       life: burst ? 1 : Math.random(),
-      decay: burst ? 0.008 + Math.random() * 0.008 : 0.001 + Math.random() * 0.002,
-      gravity: burst ? 0.18 : 0.02,
+      decay: isGold ? 0.003 + Math.random() * 0.004 : (burst ? 0.008 + Math.random() * 0.008 : 0.001 + Math.random() * 0.002),
+      gravity: burst ? 0.18 : (isGold ? 0.004 : 0.02),
       wobble: Math.random() * Math.PI * 2,
+      twinkle: Math.random() * Math.PI * 2,
     };
   }
 
@@ -119,17 +185,36 @@
     ctx.restore();
   }
 
+  function drawGold(x, y, size, color, opacity, twinkle) {
+    var glow = size * (2 + Math.sin(twinkle) * 0.5);
+    ctx.save();
+    ctx.globalAlpha = opacity * 0.25;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(x, y, glow, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = opacity;
+    ctx.beginPath();
+    ctx.arc(x, y, size, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
   function tick() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    if (ambientMode && particles.length < 35 && Math.random() < 0.08) {
-      particles.push(createParticle(Math.random() * canvas.width, -20, false));
+    var ambientLimit = kinaMode ? 55 : 35;
+    var spawnRate = kinaMode ? 0.16 : 0.08;
+
+    if (ambientMode && particles.length < ambientLimit && Math.random() < spawnRate) {
+      particles.push(createParticle(Math.random() * canvas.width, -20, false, kinaMode && Math.random() < 0.45));
     }
 
     for (var i = particles.length - 1; i >= 0; i--) {
       var p = particles[i];
       p.wobble += 0.04;
-      p.x += p.vx + Math.sin(p.wobble) * 0.3;
+      if (p.twinkle !== undefined) p.twinkle += 0.08;
+      p.x += p.vx + Math.sin(p.wobble) * (p.type === 'gold' ? 0.15 : 0.3);
       p.y += p.vy;
       p.vy += p.gravity;
       p.rotation += p.rotSpeed;
@@ -143,7 +228,8 @@
 
       ctx.globalAlpha = p.opacity;
 
-      if (p.type === 'heart') drawHeart(p.x, p.y, p.size, p.color, p.rotation);
+      if (p.type === 'gold') drawGold(p.x, p.y, p.size, p.color, p.opacity, p.twinkle);
+      else if (p.type === 'heart') drawHeart(p.x, p.y, p.size, p.color, p.rotation);
       else if (p.type === 'leaf') drawLeaf(p.x, p.y, p.size, p.color, p.rotation);
       else drawConfetti(p.x, p.y, p.size, p.color, p.rotation);
     }
@@ -156,6 +242,21 @@
       animating = false;
     }
   }
+
+  /* ---- Kına teması ---- */
+  function getDaysUntilKina() {
+    return Math.ceil((KINA_DATE - Date.now()) / 86400000);
+  }
+
+  function applyKinaTheme() {
+    var days = getDaysUntilKina();
+    kinaMode = days <= KINA_THEME_DAYS && days >= 0;
+    if (kinaMode) {
+      document.body.classList.add('kina-mode');
+    }
+  }
+
+  applyKinaTheme();
 
   /* ---- Davetiyeyi aç ---- */
   function openInvite() {
@@ -178,11 +279,11 @@
       startCountdown();
       initFilmstrip();
       startMusic();
-    }, 600);
+    }, 650);
 
     setTimeout(function () {
       intro.remove();
-    }, 1600);
+    }, 1650);
   }
 
   intro.addEventListener('click', openInvite);
@@ -193,21 +294,44 @@
   intro.setAttribute('role', 'button');
 
   /* ---- Geri sayım ---- */
+  function showCountdownCelebration() {
+    if (countdownCelebrated) return;
+    countdownCelebrated = true;
+
+    var block = document.getElementById('countdown-block');
+    var title = document.getElementById('countdown-title');
+    var timer = document.getElementById('countdown-timer');
+    var celebrate = document.getElementById('countdown-celebrate');
+
+    if (title) title.textContent = 'Kına Gecesi Bugün';
+    if (timer) timer.hidden = true;
+    if (celebrate) celebrate.hidden = false;
+    if (block) block.classList.add('is-today');
+
+    burstParticles(160);
+    setTimeout(function () { burstParticles(80); }, 350);
+
+    if (!animating) {
+      animating = true;
+      requestAnimationFrame(tick);
+    }
+  }
+
   function startCountdown() {
     var daysEl = document.getElementById('cd-days');
     var hoursEl = document.getElementById('cd-hours');
     var minsEl = document.getElementById('cd-mins');
     var secsEl = document.getElementById('cd-secs');
 
+    applyKinaTheme();
+
     function tickCd() {
       var diff = KINA_DATE - Date.now();
       if (diff <= 0) {
-        daysEl.textContent = '0';
-        hoursEl.textContent = '0';
-        minsEl.textContent = '0';
-        secsEl.textContent = '0';
+        showCountdownCelebration();
         return;
       }
+
       daysEl.textContent = Math.floor(diff / 86400000);
       hoursEl.textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
       minsEl.textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');

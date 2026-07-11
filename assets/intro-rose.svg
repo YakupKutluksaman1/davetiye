@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <radialGradient id="petalLight" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#fce8ea"/>
+      <stop offset="55%" stop-color="#e8b4bc"/>
+      <stop offset="100%" stop-color="#c99595"/>
+    </radialGradient>
+    <radialGradient id="petalDeep" cx="45%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#d4a0a8"/>
+      <stop offset="100%" stop-color="#722F37"/>
+    </radialGradient>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8faa8f"/>
+      <stop offset="100%" stop-color="#5a735a"/>
+    </linearGradient>
+  </defs>
+  <!-- yapraklar -->
+  <path d="M18 78 C28 68, 34 58, 30 48 C26 38, 18 42, 14 52 C10 62, 12 72, 18 78 Z" fill="url(#leafGrad)" opacity="0.9"/>
+  <path d="M18 78 C24 70, 26 60, 22 54" fill="none" stroke="#4a634a" stroke-width="0.6" opacity="0.5"/>
+  <path d="M92 82 C82 72, 76 60, 80 50 C84 40, 94 44, 98 54 C102 64, 100 74, 92 82 Z" fill="url(#leafGrad)" opacity="0.85"/>
+  <path d="M92 82 C86 74, 84 64, 88 58" fill="none" stroke="#4a634a" stroke-width="0.6" opacity="0.5"/>
+  <path d="M48 96 C56 88, 64 88, 72 96 C64 100, 56 100, 48 96 Z" fill="url(#leafGrad)" opacity="0.75"/>
+  <!-- gül yapraklar1  d1_ -->
+  <ellipse cx="60" cy="52" rx="22" ry="14" fill="url(#petalDeep)" transform="rotate(-35 60 52)" opacity="0.85"/>
+  <ellipse cx="60" cy="52" rx="22" ry="14" fill="url(#petalDeep)" transform="rotate(35 60 52)" opacity="0.85"/>
+  <ellipse cx="60" cy="52" rx="22" ry="14" fill="url(#petalDeep)" transform="rotate(95 60 52)" opacity="0.8"/>
+  <ellipse cx="60" cy="52" rx="22" ry="14" fill="url(#petalDeep)" transform="rotate(155 60 52)" opacity="0.8"/>
+  <ellipse cx="60" cy="52" rx="22" ry="14" fill="url(#petalDeep)" transform="rotate(-95 60 52)" opacity="0.8"/>
+  <!-- gül yapraklar1  orta -->
+  <ellipse cx="60" cy="50" rx="16" ry="10" fill="url(#petalLight)" transform="rotate(-10 60 50)"/>
+  <ellipse cx="60" cy="50" rx="16" ry="10" fill="url(#petalLight)" transform="rotate(50 60 50)"/>
+  <ellipse cx="60" cy="50" rx="16" ry="10" fill="url(#petalLight)" transform="rotate(110 60 50)"/>
+  <ellipse cx="60" cy="50" rx="16" ry="10" fill="url(#petalLight)" transform="rotate(170 60 50)"/>
+  <ellipse cx="60" cy="50" rx="16" ry="10" fill="url(#petalLight)" transform="rotate(-70 60 50)"/>
+  <!-- gül merkezi -->
+  <circle cx="60" cy="48" r="7" fill="#722F37" opacity="0.55"/>
+  <circle cx="60" cy="48" r="4" fill="#c99595"/>
+  <circle cx="58" cy="46" r="1.2" fill="#fce8ea" opacity="0.8"/>
+  <!-- tomurcuk -->
+  <ellipse cx="88" cy="38" rx="7" ry="9" fill="url(#petalLight)" transform="rotate(20 88 38)"/>
+  <ellipse cx="88" cy="38" rx="4" ry="6" fill="#c99595" transform="rotate(20 88 38)"/>
+</svg>
